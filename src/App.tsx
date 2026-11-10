@@ -1,34 +1,20 @@
-import { ArrowDown, ArrowRight, ArrowUpRight, CodeXml, Menu, X } from 'lucide-react'
+import { ArrowDown, ArrowRight, ArrowUpRight, CodeXml, Menu, Smartphone, Wrench, X } from 'lucide-react'
 import { useState } from 'react'
 
 const projects = [
   {
     number: '01',
-    name: 'Earthly',
-    category: 'E-commerce · Concept project',
-    description: 'A calmer way to shop consciously, with a little more room to breathe.',
-    className: 'earthly',
-    label: 'GOOD THINGS, GROWN SLOWLY',
-  },
-  {
-    number: '02',
-    name: 'Frame',
-    category: 'Editorial · Concept project',
-    description: 'An editorial home for photographs, notes, and the stories in between.',
-    className: 'frame',
-    label: 'A STUDY IN STILLNESS',
-  },
-  {
-    number: '03',
-    name: 'Offcut',
-    category: 'Web app · Concept project',
-    description: 'A playful toolkit for turning small, overlooked ideas into something useful.',
-    className: 'offcut',
-    label: 'MAKE ROOM FOR THE ROUGH DRAFT',
+    name: 'Kear Phone Service Center',
+    category: 'Electronics shop management system',
+    description:
+      'A management system for an electronics repair and retail shop—built around the day-to-day needs of the business.',
+    className: 'shop',
+    label: 'REPAIRS · PARTS · RETAIL',
+    href: 'https://kearphoneservicecenter.com/',
   },
 ]
 
-const skills = ['React', 'TypeScript', 'JavaScript', 'CSS', 'HTML', 'Figma']
+const skills = ['HTML', 'CSS', 'JavaScript', 'React.js', 'MySQL', 'Figma']
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -69,17 +55,16 @@ function App() {
       <main>
         <section className="hero page-gutter" id="home">
           <div className="hero-copy">
-            <p className="eyebrow"><span className="status-dot" /> FRONTEND DEVELOPER & CREATIVE BUILDER</p>
+            <p className="hero-name">David Mulindwa</p>
+            <p className="eyebrow"><span className="status-dot" /> SOFTWARE ENGINEER · PRODUCT-MINDED BUILDER</p>
             <h1>
-              I make the
-              <br />
-              internet feel
-              <br />
-              <span className="highlight">more human.</span>
+              <span className="headline-line">I build software</span>
+              <span className="headline-line">that makes real</span>
+              <span className="headline-line highlight">work easier.</span>
             </h1>
             <p className="hero-description">
-              Hey, I’m David — a developer who cares about the little details that make a big
-              difference. I build clear, considered experiences for the web.
+              I’m David, a software engineer who builds practical tools for real businesses —
+              like the electronics shop management system I made for Kear Phone Service Center.
             </p>
             <div className="hero-actions">
               <a className="button button-lime" href="#work">
@@ -110,10 +95,10 @@ function App() {
         <section className="work-section page-gutter" id="work">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">A FEW THINGS I’VE BEEN THINKING ABOUT</p>
-              <h2>Selected <span>work.</span></h2>
+              <p className="eyebrow">ONE REAL BUSINESS. ONE USEFUL TOOL.</p>
+              <h2>Built for <span>real life.</span></h2>
             </div>
-            <p className="section-aside">Curious ideas, carefully made.<br />More to come.</p>
+            <p className="section-aside">A live electronics shop<br />management system.</p>
           </div>
 
           <div className="project-list">
@@ -121,27 +106,20 @@ function App() {
               <article className={`project-card ${project.className}`} key={project.number}>
                 <div className={`project-art ${project.className}-art`} aria-hidden="true">
                   <span className="project-art-label">{project.label}</span>
-                  {project.className === 'earthly' && (
-                    <div className="earthly-objects">
-                      <span className="earthly-circle" />
-                      <span className="earthly-bottle" />
-                      <span className="earthly-leaf leaf-one" />
-                      <span className="earthly-leaf leaf-two" />
-                    </div>
-                  )}
-                  {project.className === 'frame' && (
-                    <div className="frame-window">
-                      <span className="frame-sun" />
-                      <span className="frame-hill hill-one" />
-                      <span className="frame-hill hill-two" />
-                      <span className="frame-photo-note">FIG. 01 — SLOW MORNING</span>
-                    </div>
-                  )}
-                  {project.className === 'offcut' && (
-                    <div className="offcut-paper">
-                      <span className="offcut-star">✳</span>
-                      <span className="offcut-note">IDEAS<br />WELCOME.</span>
-                      <span className="offcut-scribble">↗</span>
+                  {project.className === 'shop' && (
+                    <div className="shop-graphic">
+                      <div className="shop-mark" aria-hidden="true">
+                        <Smartphone size={42} strokeWidth={1.2} />
+                        <Wrench size={20} strokeWidth={1.5} />
+                      </div>
+                      <div className="shop-brand">KEAR PHONE <span>SERVICE CENTER</span></div>
+                      <div className="shop-rule" />
+                      <div className="shop-offerings">
+                        <span>REPAIRS</span>
+                        <span>PARTS</span>
+                        <span>RETAIL</span>
+                      </div>
+                      <span className="shop-graphic-note">BUILT FOR THE DAY-TO-DAY</span>
                     </div>
                   )}
                 </div>
@@ -150,9 +128,20 @@ function App() {
                     <span className="project-number">{project.number}</span>
                     <h3>{project.name}</h3>
                     <span className="project-category">{project.category}</span>
-                    <span className="project-arrow" aria-hidden="true"><ArrowUpRight size={18} /></span>
+                    <a
+                      className="project-arrow"
+                      href={project.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Open ${project.name} in a new tab`}
+                    >
+                      <ArrowUpRight size={18} />
+                    </a>
                   </div>
                   <p>{project.description}</p>
+                  <a className="text-link project-link" href={project.href} target="_blank" rel="noreferrer">
+                    Open the live project <ArrowUpRight size={15} aria-hidden="true" />
+                  </a>
                 </div>
               </article>
             ))}
@@ -165,22 +154,22 @@ function App() {
             <span className="about-marker">✳ &nbsp; NICE TO MEET YOU</span>
           </div>
           <div className="about-content">
-            <h2>Good work lives<br />in the <span>details.</span></h2>
+            <h2>Good software<br />makes hard things <span>easier.</span></h2>
             <div className="about-copy">
               <p>
-                I’m David, a frontend developer drawn to the space where thoughtful design and
-                dependable code meet. I like untangling tricky problems, making useful things,
-                and leaving the pixels a little better than I found them.
+                I’m David, a software engineer who likes seeing the whole picture: what people
+                need, how a product feels to use, and what makes it work behind the scenes.
               </p>
               <p>
-                My toolkit includes the modern web fundamentals, a healthy curiosity, and a
-                soft spot for the small finishing touches.
+                I built an electronics shop management system for Kear Phone Service Center.
+                It’s the kind of work I enjoy most—solving a real problem with a tool made for
+                the people who use it.
               </p>
               <div className="skill-list" aria-label="Tools and technologies">
                 {skills.map((skill) => <span className="skill-tag" key={skill}>{skill}</span>)}
               </div>
               <a className="text-link about-link" href="https://github.com/MulindwaDavid" target="_blank" rel="noreferrer">
-                More about my work on GitHub <ArrowUpRight size={15} aria-hidden="true" />
+                See my code on GitHub <ArrowUpRight size={15} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -189,14 +178,40 @@ function App() {
         <section className="contact-section page-gutter" id="contact">
           <div className="contact-card">
             <div className="contact-copy">
-              <p className="eyebrow">HAVE A GOOD ONE IN MIND?</p>
-              <h2>Let’s make<br />it <span>happen.</span></h2>
+              <p className="eyebrow">HAVE A PROJECT IDEA?</p>
+              <h2>Let’s make<br />something <span>matter.</span></h2>
               <p className="contact-description">
-                Have a project, a question, or just want to say hello? My inbox is open.
+                Do you have a project idea? I’d love to hear what you’re thinking and help bring it to life.
               </p>
-              <a className="button button-lime" href="mailto:hello@example.com">
-                Say hello <ArrowUpRight size={16} aria-hidden="true" />
+              <a className="button button-lime" href="mailto:davidmulindwa602@gmail.com">
+                Tell me about it <ArrowUpRight size={16} aria-hidden="true" />
               </a>
+              <div className="contact-phones" aria-label="Phone numbers">
+                <a
+                  className="whatsapp-link"
+                  href="https://wa.me/256763617495"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Message +256 763 617 495 on WhatsApp"
+                >
+                  <svg className="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="11" fill="currentColor" />
+                    <path
+                      d="M7.5 18.2 8.3 15.7a7 7 0 1 1 2.3 1.4l-3.1 1.1Z"
+                      fill="none"
+                      stroke="#fff"
+                      strokeLinejoin="round"
+                      strokeWidth="1.4"
+                    />
+                    <path
+                      d="M9.3 8.7c.2-.5.5-.5.8-.5h.3c.2 0 .3.1.4.4l.6 1.4c.1.2 0 .4-.1.6l-.5.6c-.2.2-.1.3 0 .5.5.8 1.2 1.5 2.1 1.9.2.1.4.1.5-.1l.6-.7c.2-.2.4-.2.6-.1l1.3.6c.2.1.3.2.3.4 0 .3-.2 1-.7 1.3-.4.4-1 .6-1.6.5-.6 0-1.5-.3-2.6-.9-1.4-.8-2.4-2.1-2.6-2.3-.2-.3-.8-1-.8-1.8s.4-1.3.6-1.5Z"
+                      fill="#fff"
+                    />
+                  </svg>
+                  +256 763 617 495
+                </a>
+                <a href="tel:+256732481457">+256 732 481 457</a>
+              </div>
             </div>
             <div className="contact-decoration" aria-hidden="true">
               <div className="contact-ring ring-one" />

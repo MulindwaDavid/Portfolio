@@ -16,11 +16,18 @@ npm run build
 npm run preview
 ```
 
+## Deploy to Netlify
+
+Connect the repository to Netlify. The included `netlify.toml` sets the build command
+to `npm run build`, the publish directory to `dist`, and the Node.js version to 22.
+Netlify installs dependencies from `package-lock.json`; `node_modules` should stay
+ignored and should not be committed.
+
 ## Make it yours
 
-- Update the intro, biography, and project examples in `src/App.tsx`.
-- Replace `hello@example.com` with your email address.
+- Update the intro, biography, project details, and skills in `src/App.tsx`.
+- Update the contact email in `src/App.tsx`.
 - Update the page title and description in `index.html`.
 - Adjust the colors, layout, and typography in `src/styles.css`.
 
-The projects are concept examples; replace their copy and artwork with your own work.
+The featured project artwork is an illustrative graphic, not a screenshot of the live application.
